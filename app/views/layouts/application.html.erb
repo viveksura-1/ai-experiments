@@ -11,6 +11,11 @@
   </head>
 
   <body>
-     <%= yield %>
+    <div class="container wrapper">
+      <div id="application-layout"></div>
+      <div class="content" style="float: right;">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
