@@ -17,6 +17,7 @@ class PdfsController < ApplicationController
         if question.present? && pdf.present?
             answer = PdfUtils.query_file(question, pdf[:local_path])
         end
+        Rails.logger.debug "answer = #{answer.inspect}"
         render json: {
             question: question,
             answer: answer
