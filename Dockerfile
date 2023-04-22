@@ -2,6 +2,7 @@ FROM ruby:3.2.0-slim
 
 RUN apt-get update -qq && apt-get install -yq --no-install-recommends \
     build-essential \
+    curl \
     gnupg2 \
     less \
     git \
@@ -15,10 +16,15 @@ ENV LANG=C.UTF-8 \
   BUNDLE_RETRY=3
   
 RUN gem update --system && gem install bundler
+RUN curl -sL https://deb.nodesource.com/setup_18.x | bash -
+RUN apt-get install -y nodejs
+RUN npm install -g yarn@1.22.19
+
 
 RUN mkdir /app
 WORKDIR /app 
 ADD Gemfile /app/Gemfile
 ADD Gemfile.lock /app/Gemfile.lock
 RUN bundle install
-ADD . /app
+ADD package.json /app/package.json
+RUN yarn install

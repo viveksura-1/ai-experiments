@@ -1,0 +1,12 @@
+{
+  "name": "app",
+  "private": "true",
+  "scripts": {
+    "build": "sleep 9999999999 | esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets"
+  },
+  "dependencies": {
+    "esbuild": "^0.17.17",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
