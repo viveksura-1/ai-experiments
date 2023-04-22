@@ -1,0 +1,266 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+	overflow-y: scroll; 
+}
+
+body {
+  background:#ffffff;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+a {
+  text-decoration:none;
+  color:#1ab188;
+  transition:.5s ease;
+  &:hover {
+    color:darken(#1ab188,5%);
+  }
+}
+
+.form {
+  background:rgba(#13232f,.9);
+  padding: 40px;
+  max-width:600px;
+  margin:40px auto;
+  border-radius:4px;
+  box-shadow:0 4px 10px 4px rgba(#13232f,.3);
+}
+
+.tab-group {
+  list-style:none;
+  padding:0;
+  margin:0 0 40px 0;
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  li a {
+    display:block;
+    text-decoration:none;
+    padding:15px;
+    background:rgba(#a0b3b0,.25);
+    color:#a0b3b0;
+    font-size:20px;
+    float:left;
+    width:50%;
+    text-align:center;
+    cursor:pointer;
+    transition:.5s ease;
+    &:hover {
+      background :darken(#1ab188,5%);
+      color: #ffffff;
+    }
+  }
+  .active a {
+    background:#1ab188;
+    color:#ffffff;
+  }
+}
+
+.tab-content > div:last-child {
+  display:none;
+}
+
+
+h1 {
+  text-align:center;
+  color:#ffffff;
+  font-weight:300;
+  margin:0 0 40px;
+}
+
+label {
+  position:absolute;
+  transform:translateY(6px);
+  left:13px;
+  color:rgba(#ffffff,.5);
+  transition:all 0.25s ease;
+  -webkit-backface-visibility: hidden;
+  pointer-events: none;
+  font-size:22px;
+  .req {
+  	margin:2px;
+  	color:#1ab188;
+  }
+}
+
+label.active {
+  transform:translateY(50px);
+  left:2px;
+  font-size:14px;
+  .req {
+    opacity:0;
+  }
+}
+
+label.highlight {
+	color:#ffffff;
+}
+
+input, textarea {
+  font-size:22px;
+  display:block;
+  width:100%;
+  height:100%;
+  padding:5px 10px;
+  background:none;
+  background-image:none;
+  border:1px solid #a0b3b0;
+  color:#050000;
+  border-radius:0;
+  transition:border-color .25s ease, box-shadow .25s ease;
+  &:focus {
+		outline:0;
+		border-color:#1ab188;
+  }
+}
+
+textarea {
+  border:2px solid #a0b3b0;
+  resize: vertical;
+}
+
+.field-wrap {
+  position:relative;
+  margin-bottom:40px;
+}
+
+.top-row {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  > div {
+    float:left;
+    width:48%;
+    margin-right:4%;
+    &:last-child { 
+      margin:0;
+    }
+  }
+}
+
+.button {
+  border:0;
+  outline:none;
+  border-radius:0;
+  padding:15px 0;
+  font-size:2rem;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  background:#1ab188;
+  color:#0c0000;
+  transition:all.5s ease;
+  -webkit-appearance: none;
+  &:hover, &:focus {
+    background:darken(#1ab188,5%);
+  }
+}
+
+.button-block {
+  display:block;
+  width:100%;
+}
+
+.forgot {
+  margin-top:-20px;
+  text-align:right;
+}
+
+
+.grid {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+}
+.grid > div {
+  background-color: rgb(15, 15, 15);
+  color: white;
+  padding: 10px;
+}
+
+body {
+  margin: 0;
+  padding:0;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.sidebar,
+.content {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  color: rgb(16, 0, 0);
+  min-height: 500px;
+  border-radius: 4px;
+  margin: 20px;
+  border:0px solid #777;
+}
+
+.sidebar {
+  flex-grow: 1;
+  min-width: 100px;
+  max-width: 200px;
+  position: sticky;
+  top: 0;
+}
+
+.content {
+  flex-grow: 5;
+  min-width: 630px;
+  overflow-y: scroll;
+  max-height: 800px;
+}
+
+
+.sidebar > a {
+  font-family: "Segoe UI",Arial,sans-serif;
+  text-decoration: none;
+  display: block;
+  padding: 2px 1px 1px 16px;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
