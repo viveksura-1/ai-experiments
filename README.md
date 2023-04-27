@@ -1,24 +1,9 @@
-# README
+# Dev Setup
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Install Docker Desktop / (Docker + Docker Compose) on your local machine
 
-Things you may want to cover:
+* Get OpenAi API Key and save it in your machine's bash (not in docker bash) env variable as `OPEN_AI_API_KEY`.
 
-* Ruby version
+* `docker build . -t  ai-experiments-app` to build the docker image 
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* `docker compose up` to run the server on localhost:3000
