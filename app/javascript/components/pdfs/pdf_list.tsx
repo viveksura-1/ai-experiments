@@ -5,6 +5,7 @@ class PdfList extends React.Component {
     selectedId: 1,
     responses: [],
     nextQuestion: "",
+    isLoading: false
   }
 
   props: {
@@ -21,7 +22,7 @@ class PdfList extends React.Component {
 
   askPdf() {
     if (this.state.nextQuestion.length > 0) {
-      this.setState({nextQuestion: ""})
+      this.setState({nextQuestion: "", isLoading: true})
       const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -34,7 +35,7 @@ class PdfList extends React.Component {
           const data = isJson && await response.json();
           let responses = JSON.parse(JSON.stringify(this.state.responses));
           responses.push(data);
-          this.setState({responses: responses});
+          this.setState({responses: responses, isLoading: false});
         }).catch((error) => {
         })
     }
@@ -63,18 +64,24 @@ class PdfList extends React.Component {
           <div style={{textAlign: "center", padding: "10px"}}>
             { "Ask a question about " + selectedPdf.name }
           </div>
-          <textarea name="question" id="question" onChange={this.onTextChange.bind(this)}> </textarea>
-          <button type="button" style={{display: "block", marginLeft: "auto", marginRight: "auto", marginTop: "20px"}} onClick={ this.askPdf.bind(this) } > Ask </button>
           {
-          this.state.responses.reverse().map(response => {
-            return (
-              <div style={{display: "block", marginLeft: "auto", marginRight: "auto", marginTop: "20px"}} >
-                <b> { response.question } </b>
-                <p> { response.answer } </p>
-              </div>
-            )
-          })
-        }
+            this.state.isLoading ? 
+              <p> Answer Loading... </p> : 
+              <>
+                <textarea name="question" id="question" onChange={this.onTextChange.bind(this)}> </textarea>
+                <button type="button" style={{display: "block", marginLeft: "auto", marginRight: "auto", marginTop: "20px"}} onClick={ this.askPdf.bind(this) } > Ask </button>
+              </>
+          }
+          {
+            JSON.parse(JSON.stringify(this.state.responses)).reverse().map(response => {
+              return (
+                <div style={{display: "block", marginLeft: "auto", marginRight: "auto", marginTop: "20px"}} >
+                  <b> { response.question } </b>
+                  <p> { response.answer } </p>
+                </div>
+              )
+            })
+          }
         </div>
         
 
