@@ -215,6 +215,8 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
+    tailwindcss-rails (2.0.29-x86_64-linux)
+      railties (>= 6.0.0)
     thor (1.2.1)
     timeout (0.3.2)
     ttfunk (1.7.0)
@@ -263,6 +265,7 @@ DEPENDENCIES
   selenium-webdriver
   sidekiq (~> 7.0.9)
   sprockets-rails
+  tailwindcss-rails (~> 2.0)
   tzinfo-data
   web-console
   webdrivers

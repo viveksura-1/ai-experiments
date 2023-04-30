@@ -45,7 +45,9 @@ class PdfList extends React.Component {
     let selectedPdf = this.props.pdfs.filter((pdf) => { return pdf.id == this.state.selectedId })[0];
     return (
       <div>
-        <h2 style={{textAlign: "center"}}> Ask a PDF </h2>
+        <h1 className="text-3xl font-bold underline text-center">
+            Ask A PDF
+        </h1>
         <div className="grid">
           {
             this.props.pdfs.map((pdf) => {
@@ -66,7 +68,7 @@ class PdfList extends React.Component {
           </div>
           {
             this.state.isLoading ? 
-              <p> Answer Loading... </p> : 
+              <p> Answer Loadings... </p> : 
               <>
                 <textarea name="question" id="question" onChange={this.onTextChange.bind(this)}> </textarea>
                 <button type="button" style={{display: "block", marginLeft: "auto", marginRight: "auto", marginTop: "20px"}} onClick={ this.askPdf.bind(this) } > Ask </button>

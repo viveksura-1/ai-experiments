@@ -21,6 +21,8 @@ services:
       links:
         - db
       environment:
+        RAILS_ENV: development
+        RACK_ENV: development
         DB_USER: root
         DB_NAME: app
         DB_PASSWORD: password

@@ -79,13 +79,6 @@ a {
 }
 
 
-h1 {
-  text-align:center;
-  color:#ffffff;
-  font-weight:300;
-  margin:0 0 40px;
-}
-
 label {
   position:absolute;
   transform:translateY(6px);
@@ -225,11 +218,6 @@ body {
   max-width: 200px;
   position: sticky;
   top: 0;
-}
-
-.content {
-  flex-grow: 5;
-  min-width: 630px;
 }
 
 

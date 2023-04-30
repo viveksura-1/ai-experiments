@@ -3,7 +3,7 @@
   "private": "true",
   "scripts": {
     "dev": "sleep 9999999999 | esbuild app/javascript/**.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
-    "build": "esbuild app/javascript/**.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets"
+    "build": "esbuild app/javascript/**.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets && bin/rails tailwindcss:build"
   },
   "dependencies": {
     "yarn": "~1.22.19",
