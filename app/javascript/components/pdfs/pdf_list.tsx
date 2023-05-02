@@ -45,39 +45,39 @@ class PdfList extends React.Component {
     let selectedPdf = this.props.pdfs.filter((pdf) => { return pdf.id == this.state.selectedId })[0];
     return (
       <div>
-        <h1 className="text-3xl font-bold underline text-center">
+        <h1 className="text-3xl font-bold underline text-center m-5">
             Ask A PDF
         </h1>
-        <div className="grid">
+        <div className="grid grid-cols-3 gap-4 m-5">
           {
             this.props.pdfs.map((pdf) => {
               let backgroundColor = (pdf.id == this.state.selectedId) ? "grey" : null;
               return (
-              <div className="grid-item" style={{borderStyle: "solid", height: "330px", backgroundColor: backgroundColor }} onClick={this.onSelectPdf.bind(this, pdf.id)} >
-                  <img src={pdf.thumbnail} style={{display: "block", marginLeft: "auto", marginRight: "auto", height: "270px" }} />
-                  <a href={pdf.public_url} style={{display: "block", marginLeft: "auto", marginRight: "auto", paddingTop: "20px", bottom: "5px"}} >
+              <div className="grid-item border-2 border-black outline-offset-8" onClick={this.onSelectPdf.bind(this, pdf.id)} style={{backgroundColor: backgroundColor}}>
+                  <img src={pdf.thumbnail} className="h-64 mx-auto mt-5 mb-5" />
+                  <a href={pdf.public_url} className="block text-center mb-5" >
                     {pdf.name}
                   </a>
               </div>
             )})
           }
         </div>
-        <div style={{display: "block", marginLeft: "auto", marginRight: "auto", padding: "50px", width: "50%"}} >
-          <div style={{textAlign: "center", padding: "10px"}}>
+        <div className="max-w-xl mx-auto">
+          <div className="font-bold text-center m-5">
             { "Ask a question about " + selectedPdf.name }
           </div>
           {
             this.state.isLoading ? 
               <p> Answer Loadings... </p> : 
-              <>
-                <textarea name="question" id="question" onChange={this.onTextChange.bind(this)}> </textarea>
-                <button type="button" style={{display: "block", marginLeft: "auto", marginRight: "auto", marginTop: "20px"}} onClick={ this.askPdf.bind(this) } > Ask </button>
-              </>
+              <div className="text-center block ">
+                <textarea name="question" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-5" id="question" onChange={this.onTextChange.bind(this)}> </textarea>
+                <button className="rounded-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={ this.askPdf.bind(this) } > Ask </button>
+              </div>
           }
           {
             JSON.parse(JSON.stringify(this.state.responses)).reverse().map(response => {
               return (
-                <div style={{display: "block", marginLeft: "auto", marginRight: "auto", marginTop: "20px"}} >
+                <div className="block mt-5" >
                   <b> { response.question } </b>
                   <p> { response.answer } </p>
                 </div>
